@@ -166,8 +166,55 @@ let hu1:Person = new Person();
 let hu2:Marmal = new Person();
 let hu3:Nature = new Person();
 
-// 클래스의 특성(값:Propety, 함수:Method 로 구분) 파악
+// 클래스의 특성(값:Property, 함수:Method 로 구분) 파악
 // 즉, 클래스도 데이터 종류(타입)인데 특이점으로는 값과 기능을 가진 데이터 타입이다.
 // 프로그래밍언어에서 값 + 기능의 데이터 타입을
 // 활용할 수 있도록 해주는 언어를 "객체 지향 언어"라고 한다.
 // JAVA, C++ ....
+
+class Cat {
+    // Cat이라는 데이터에 활용될 변수(property) 세팅
+    private eye:number = 2;
+    protected nose:number = 1;
+    readonly lip:number = 1; // 변경X
+    public leg:number = 4;
+    public tail:number = 1;
+    // 생성자 함수
+    constructor(_count:number = 0){
+        // private, protected 가 적용되면 함수 생성 불가능.
+        // readonly는 한번 초기화 가능
+        this.lip = _count;
+    }
+    // C++, C#, JAVA....  public void Cat(){}
+
+    // 데이터 특성 중 메서드 정의
+    say(){
+        // Cat 내의 변수를 모두 접근할 수 있다.
+        console.log(this.eye);
+        console.log(this.nose);
+        console.log(this.lip);
+        console.log(this.leg);
+        console.log(this.tail);
+    }
+
+    // private 변수
+    private _nickName = ""; // private 이기 때문에 블록 바깥에서 사용할 수 없다.
+    // getter 메서드
+    get nickName(){ // 매개변수X
+        return this._nickName;
+    }
+    // setter 메서드
+    set nickName(_name:string) { // 매개변수 무조건!
+        this._nickName = _name;
+    }
+}
+// new 는 인스턴스를 생산한다.
+let yaOng = new Cat(1);
+console.log(yaOng.lip);
+yaOng.say(); // say함수가 public이기 때문에 접근이 가능하다.
+
+console.log(yaOng.nickName); // get 적용
+yaOng.nickName = "양양이"; // set 적용
+
+let tiger = new Cat();
+let lion = new Cat();
