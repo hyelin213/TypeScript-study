@@ -207,14 +207,45 @@ class Cat {
     set nickName(_name:string) { // 매개변수 무조건!
         this._nickName = _name;
     }
+
+    // 고양이과는 아래처럼 소리를 낸다.
+    cry() {
+        console.log("애옹!");
+    }
+
+    catch() {
+        console.log("쥐를 잡는다.");
+    }
 }
+
+class Tiger extends Cat {
+    // 부모의 메서드를 덮어 쓴다.(재정의) 오버라이딩(Overriding)
+    cry(): void {
+        console.log("어흥");
+    }
+
+    catch() {
+        console.log("물소를 잡는다.");
+    }
+};
+
+class Lion extends Cat {
+    cry(): void {
+        console.log("어흥흥");
+    }
+}
+
 // new 는 인스턴스를 생산한다.
 let yaOng = new Cat(1);
 console.log(yaOng.lip);
 yaOng.say(); // say함수가 public이기 때문에 접근이 가능하다.
+yaOng.cry();
 
 console.log(yaOng.nickName); // get 적용
 yaOng.nickName = "양양이"; // set 적용
 
-let tiger = new Cat();
-let lion = new Cat();
+let tiger = new Tiger();
+tiger.cry();
+let lion = new Lion();
+lion.cry();
+
