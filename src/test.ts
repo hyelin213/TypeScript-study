@@ -249,7 +249,10 @@ tiger.cry();
 let lion = new Lion();
 lion.cry();
 
-// =================================================================
+// ---------------------------------------------------------------------------
+
+// 인스턴스 - 앞으로 만들어 지는 것
+// static - 이미 만들어진 것
 
 class Animal2 {
     // 현재는 new 해서 만들어지는 인스턴스에 보관이 된다.
@@ -270,11 +273,14 @@ class Animal2 {
         console.log("으르릉~");
     };
 
-    // 클래스 메서드에서 인스턴스 속성 접근
+    // 클래스 메서드에서 인스턴스(new) 속성 접근 X
     // Animal2.show();
+    // 클래스 메서드에서 클래스 속성에만 접근 O
     public static show():void {
         // this는 Animal2 를 가리킨다.
-        this.
+        // this.cry(); X
+        // static에서는 클래스명을 사용!
+        Animal2.cry();
     }
 }
 class Cat2 extends Animal2 {};
@@ -295,3 +301,45 @@ Animal2.cry();
 let yong:Cat2 = new Cat2();
 let mong:Dog = new Dog();
 
+// ---------------------------------------------------------------------------
+
+// 추상화한 클래스 : 추상클래스(Abstract Class)
+// 클래스를 작성할 때 각 속성, 각 기능을 미리 정의
+// 약속과 기준을 지키는 것.
+
+// 구체적인 속성 = 값, 기능을 코딩하지 않는다.
+// 상속받는 클래스에 속성, 기능을 작성하도록 강제(위임)한다.
+// abstract는 반드시 abstract를 갖고 있어야된다.
+abstract class Animal3 {
+    // 메서드
+    move():void {
+        console.log("어슬렁~~~");
+    };
+    // 추상 메서드
+    abstract makeSound():void;
+}
+
+// abstract 클래스는 인스턴스 생성불가
+// let go:Animal3 = new Animal3();
+
+class Cat3 extends Animal3 {
+    // abstract 구현
+    makeSound(): void {
+        console.log("야아아앙");
+    }
+};
+
+class Dog2 extends Animal3 {
+    // abstract 구현
+    makeSound(): void {
+        console.log("머멈멈");
+    }
+}; 
+
+let yaong2: Cat3 = new Cat3();
+yaong2.move();
+yaong2.makeSound();
+
+let dg: Dog2 = new Dog2();
+yaong2.move();
+yaong2.makeSound();
