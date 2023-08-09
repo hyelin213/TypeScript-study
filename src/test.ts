@@ -111,3 +111,63 @@ let gB:Array<TA> = [];
 // h 배열에 순서와 타입, 개수가 지정되는 경우
 type Tu = [number, string, boolean, number];
 let h:Tu = [1, "a", true, 100];
+
+// enum : 단어를 통해서 순서번호 또는 글자를 정의해 두고 활용
+enum Direction {
+    UP,
+    DOWN,
+    LEF,
+    RIGHT,
+};
+let i : Direction;
+i = Direction.UP;
+
+// Literal : 데이터 종류X, 데이터 값을 미리 지정
+type OS = "Window" | "Linux" | "Mac";
+let j:OS = "Window";
+
+// Union : 변수의 종류 2개 이상을 정의할 때
+type Un = number | string;
+let k:Un = 5;
+
+// 객체
+let o:{} = {};
+let oB: {
+    a: Un;
+    b: boolean;
+} = {a: 1, b: true};
+
+// 함수
+function go(): void {};
+function gogo(a: Un, b:string): string {
+    return a + b;
+}
+let res: string = gogo("false", "9");
+
+// 클래스
+class Z {};
+let zIns:Z = new Z();
+
+class Animal extends Z {}; // Z를 모두 상속받음
+// 일반적인 형태
+let aIns:Animal = new Animal();
+// Z 상속
+let bIns:Z = new Animal();
+
+// 복잡한 상속
+// 자연
+class Nature {};
+// 포유류
+class Marmal extends Nature {};
+// 사람
+class Person extends Marmal {};
+// 상속들로 인스턴스 생성 시 데이터 타입 주의
+let hu1:Person = new Person();
+let hu2:Marmal = new Person();
+let hu3:Nature = new Person();
+
+// 클래스의 특성(값:Propety, 함수:Method 로 구분) 파악
+// 즉, 클래스도 데이터 종류(타입)인데 특이점으로는 값과 기능을 가진 데이터 타입이다.
+// 프로그래밍언어에서 값 + 기능의 데이터 타입을
+// 활용할 수 있도록 해주는 언어를 "객체 지향 언어"라고 한다.
+// JAVA, C++ ....
