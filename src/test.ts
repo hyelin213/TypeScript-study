@@ -249,3 +249,49 @@ tiger.cry();
 let lion = new Lion();
 lion.cry();
 
+// =================================================================
+
+class Animal2 {
+    // 현재는 new 해서 만들어지는 인스턴스에 보관이 된다.
+    // 복사가 되므로 계속 복사 용량이 늘어난다.
+    public eye:number = 2;
+
+    // static 은 정적 프로퍼티. 복사되지 않고 참조한다.
+    // 무조건 클래스명.변수명 으로 접근해야 한다.
+    // 장점 : 메모리 절약, 수정 시 한번만 하면 됨.
+    public static nose:number = 1;
+
+    // 인스턴스에서 복사가 되는 메서드
+    public say():void{
+        console.log("왈왈");
+    };
+    // 클래스 전용 메서드
+    public static cry() {
+        console.log("으르릉~");
+    };
+
+    // 클래스 메서드에서 인스턴스 속성 접근
+    // Animal2.show();
+    public static show():void {
+        // this는 Animal2 를 가리킨다.
+        this.
+    }
+}
+class Cat2 extends Animal2 {};
+class Dog extends Animal2 {};
+
+// 함수를 생성하지 않아도 사용이 가능하다.
+// 이미 전역에 참조할 수 있도록 만들어짐.
+Animal2.show(); 
+
+let ani:Animal2 = new Animal2();
+// 인스턴스 속성 접근
+console.log(ani.eye);
+// console.log(ani.nose); // 접근 불가!
+// 클래스 속성/메서드 접근
+console.log(Animal2.nose);
+Animal2.cry();
+
+let yong:Cat2 = new Cat2();
+let mong:Dog = new Dog();
+
